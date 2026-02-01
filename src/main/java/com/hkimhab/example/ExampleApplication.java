@@ -2,7 +2,6 @@ package com.hkimhab.example;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
 public class ExampleApplication {
@@ -22,7 +21,7 @@ public class ExampleApplication {
 	}
 
 	// By Bean 
-	@Bean 
+	// @Bean 
 	public MyFirstClass myFirstClass(){
 		return new MyFirstClass();
 	}
