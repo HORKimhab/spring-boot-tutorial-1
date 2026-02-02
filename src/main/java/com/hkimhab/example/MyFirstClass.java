@@ -1,16 +1,15 @@
 package com.hkimhab.example;
 
-import org.springframework.stereotype.Service;
-
 /**
  *
  * @author H.Kimhab
  */
 // @Component
-@Service
+// @Service
+// @Repository
 public class MyFirstClass {
   
   public String sayHello() {
-    return "Hello Universe from the MyFirstClass";
+    return "-----------\nHello Universe from the MyFirstClass";
   }
 }
