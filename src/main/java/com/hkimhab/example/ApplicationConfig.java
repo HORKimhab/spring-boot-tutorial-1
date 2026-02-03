@@ -9,6 +9,6 @@ public class ApplicationConfig {
     // By Bean 
 	@Bean("MyFirstClass")
 	public MyFirstClass myFirstClass(){
-		return new MyFirstClass();
+		return new MyFirstClass("First bean");
 	}
 }
