@@ -8,8 +8,14 @@ package com.hkimhab.example;
 // @Service
 // @Repository
 public class MyFirstClass {
-  
-  public String sayHello() {
-    return "-----------\nHello Universe from the MyFirstClass";
-  }
+
+    private String myVar;
+
+    public MyFirstClass(String myVar) {
+        this.myVar = myVar;
+    }
+
+    public String sayHello() {
+        return "-----------\nHello Universe from the MyFirstClass " + myVar;
+    }
 }
