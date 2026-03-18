@@ -1,0 +1,8 @@
+{
+  "recommendations": [
+    "openai.chatgpt",
+    "oracle.oracle-java",
+    "developersoapbox.vscode-springboot-snippets",
+    "vscjava.vscode-spring-initializr"
+  ]
+}

@@ -16,8 +16,11 @@ public class ExampleApplication {
 		// By Bean 
 		var ctx = SpringApplication.run(ExampleApplication.class, args);
 
-		MyFirstClass myFirstClass = ctx.getBean("MyFirstClass", MyFirstClass.class); 
-		System.out.println(myFirstClass.sayHello());
+		// MyFirstClass myFirstClass = ctx.getBean("MyFirstClass", MyFirstClass.class); 
+		// System.out.println(myFirstClass.sayHello());
+
+		MyFirstService myFirstService = ctx.getBean(MyFirstService.class);
+		System.out.println(myFirstService.tellAStory()) ;
 	}
 
 }

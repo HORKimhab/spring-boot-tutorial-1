@@ -9,13 +9,13 @@ package com.hkimhab.example;
 // @Repository
 public class MyFirstClass {
 
-  private String myVar; 
+    private String myVar;
 
-  public MyFirstClass(String myVar) {
-    this.myVar = myVar;
-  }
-  
-  public String sayHello() {
-    return "-----------\nHello Universe from the MyFirstClass\nMyVar: " + myVar + "\n-----------";
-  }
+    public MyFirstClass(String myVar) {
+        this.myVar = myVar;
+    }
+
+    public String sayHello() {
+        return "-----------\nHello Universe from the MyFirstClass " + myVar;
+    }
 }
