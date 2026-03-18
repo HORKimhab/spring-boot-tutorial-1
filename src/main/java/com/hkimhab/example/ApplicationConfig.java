@@ -2,7 +2,6 @@ package com.hkimhab.example;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Primary;
 
 @Configuration
 public class ApplicationConfig {
@@ -20,8 +19,8 @@ public class ApplicationConfig {
         return new MyFirstClass("Second bean");
     }
 
-	@Bean
-	@Primary
+    @Bean
+    // @Primary
     // @Qualifier("Bean2")
     public MyFirstClass myThirdClass() {
         return new MyFirstClass("Third bean");
