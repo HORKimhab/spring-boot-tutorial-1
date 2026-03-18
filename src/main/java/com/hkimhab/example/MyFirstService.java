@@ -4,7 +4,6 @@
  */
 package com.hkimhab.example;
 
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 /**
@@ -17,7 +16,9 @@ public class MyFirstService {
     private MyFirstClass myFirstClass;
 
     // @Autowired
-    public MyFirstService(@Qualifier("Bean1") MyFirstClass myFirstClass) {
+    public MyFirstService(
+        // @Qualifier("Bean1") 
+    MyFirstClass myFirstClass) {
         this.myFirstClass = myFirstClass;
     }
 

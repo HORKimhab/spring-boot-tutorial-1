@@ -3,7 +3,7 @@
 - Spring boot by @boualiali
 - Url: https://www.youtube.com/watch?v=5rNk7m_zlAg
 
-### Run 
+### Run
 
 ```bash
   # Run in vscode (git-bash, bash)
@@ -12,7 +12,7 @@
 
 ### Note
 
-``` bash
+```bash
 --- @Bean ---
 @Bean method
      ↓
@@ -26,7 +26,7 @@ reuse same object
 ---        ---
 ```
 
-```bash 
+```bash
 --- @componet ---
 
 @Component is an annotation that allows Spring to detect our custom beans automatically.
@@ -42,8 +42,6 @@ Ref: https://www.baeldung.com/spring-component-annotation
 --- @componet ---
 ```
 
-
-
 ### TODO
 
-- Learn next: https://youtu.be/5rNk7m_zlAg?t=4843
+- Learn next: https://youtu.be/5rNk7m_zlAg?t=4965
