@@ -4,8 +4,10 @@
  */
 package com.hkimhab.example;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.context.annotation.PropertySources;
 import org.springframework.stereotype.Service;
 
 /**
@@ -13,24 +15,66 @@ import org.springframework.stereotype.Service;
  * @author H.Kimhab
  */
 @Service
+// @PropertySources({
+//     @PropertySource("classpath:{fileNameProperties}"),
+//     E.g: @PropertySource("classpath:custom.properties"),
+//     @PropertySource("classpath:bar.properties")
+// })
+
+@PropertySources({
+    @PropertySource("classpath:custom.properties"),})
 public class MyFirstService {
 
     // @Autowired
     // @Qualifier("MyFirstClass")
     private MyFirstClass myFirstClass;
 
-    @Autowired
-    public void injectDependencies(
-            @Qualifier("myThirdClass") MyFirstClass myFirstClass) {
+    @Value("Hello HKimhab students")
+    private String customProperty;
+
+    @Value("${my.prop: Default custom property value}")
+    private String customPropertyFromOtherFile;
+
+    @Value("321")
+    private String customPropertyInt;
+
+    // private Environment env;
+    // @Autowired
+    // public void injectDependencies(
+    //         @Qualifier("myThirdClass") MyFirstClass myFirstClass) {
+    //     this.myFirstClass = myFirstClass;
+    // }
+    public MyFirstService(
+            @Qualifier("Bean1") MyFirstClass myFirstClass) {
         this.myFirstClass = myFirstClass;
     }
 
-    // public MyFirstService(
-    //         // @Qualifier("Bean1") 
-    //         MyFirstClass myFirstClass) {
-    //     this.myFirstClass = myFirstClass;
-    // }
     public String tellAStory() {
         return "the dependency is saying: \n" + myFirstClass.sayHello();
+    }
+
+    // public String getJavaVersion() {
+    //     return "Java version: " + env.getProperty("java.version");
+    // }
+    // public String getOsName() {
+    //     return "OS name: " + env.getProperty("os.name");
+    // }
+    // public String getCustomProperty() {
+    //     return "Custom property: " + env.getProperty("my.custom.property");
+    // }
+    // @Autowired
+    // public void setEnvironment(Environment env) {
+    //     this.env = env;
+    // }
+    public String getCustomProperty() {
+        return customProperty;
+    }
+
+    public String getCustomPropertyFromOtherFile() {
+        return customPropertyFromOtherFile;
+    }
+
+    public String getCustomPropertyInt() {
+        return customPropertyInt;
     }
 }

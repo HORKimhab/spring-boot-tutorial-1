@@ -6,21 +6,24 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class ExampleApplication {
 
-	public static void main(String[] args) {
-		// SpringApplication.run(ExampleApplication.class, args);
+    public static void main(String[] args) {
+        // SpringApplication.run(ExampleApplication.class, args);
 
-		// MyFirstClass myFirstClass = new MyFirstClass();
-		// System.out.println(myFirstClass.sayHello());
+        // MyFirstClass myFirstClass = new MyFirstClass();
+        // System.out.println(myFirstClass.sayHello());
+        // By Bean 
+        var ctx = SpringApplication.run(ExampleApplication.class, args);
 
-
-		// By Bean 
-		var ctx = SpringApplication.run(ExampleApplication.class, args);
-
-		// MyFirstClass myFirstClass = ctx.getBean("MyFirstClass", MyFirstClass.class); 
-		// System.out.println(myFirstClass.sayHello());
-
-		MyFirstService myFirstService = ctx.getBean(MyFirstService.class);
-		System.out.println(myFirstService.tellAStory()) ;
-	}
+        // MyFirstClass myFirstClass = ctx.getBean("MyFirstClass", MyFirstClass.class); 
+        // System.out.println(myFirstClass.sayHello());
+        MyFirstService myFirstService = ctx.getBean(MyFirstService.class);
+        System.out.println(myFirstService.tellAStory());
+        // System.out.println(myFirstService.getJavaVersion());
+        // System.out.println(myFirstService.getOsName());
+        // System.out.println(myFirstService.getCustomProperty());
+        System.out.println(myFirstService.getCustomProperty());
+        System.out.println(myFirstService.getCustomPropertyFromOtherFile());
+        System.out.println(myFirstService.getCustomPropertyInt());
+    }
 
 }
