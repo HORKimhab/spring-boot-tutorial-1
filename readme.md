@@ -44,4 +44,4 @@ Ref: https://www.baeldung.com/spring-component-annotation
 
 ### TODO
 
-- Learn next: https://youtu.be/5rNk7m_zlAg?t=5709
+- Learn next: https://youtu.be/5rNk7m_zlAg?t=5936

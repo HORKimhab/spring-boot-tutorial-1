@@ -22,7 +22,9 @@ import org.springframework.stereotype.Service;
 // })
 
 @PropertySources({
-    @PropertySource("classpath:custom.properties"),})
+    @PropertySource("classpath:custom.properties"),
+    @PropertySource("classpath:custom-file-2.properties"),
+})
 public class MyFirstService {
 
     // @Autowired
@@ -37,6 +39,9 @@ public class MyFirstService {
 
     @Value("321")
     private String customPropertyInt;
+
+    @Value("${my.prop.2: Default custom property value}")
+    private String customPropertyFromOtherFile2;
 
     // private Environment env;
     // @Autowired
@@ -76,5 +81,9 @@ public class MyFirstService {
 
     public String getCustomPropertyInt() {
         return customPropertyInt;
+    }
+
+    public String getCustomPropertyFromOtherFile2() {
+        return customPropertyFromOtherFile2;
     }
 }
