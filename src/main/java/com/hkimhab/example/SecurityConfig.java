@@ -12,13 +12,9 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
+            .csrf(csrf -> csrf.disable())
             .authorizeHttpRequests(auth -> auth
                 .requestMatchers("/hello", "/message").permitAll()
-                .requestMatchers(
-                    "/v3/api-docs/**",
-                    "/swagger-ui/**",
-                    "/swagger-ui.html"
-                ).authenticated()
                 .anyRequest().authenticated()
             )
             .httpBasic(Customizer.withDefaults()); // use Basic Authentication
