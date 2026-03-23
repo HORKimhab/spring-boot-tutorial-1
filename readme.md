@@ -8,6 +8,11 @@
 ```bash
   # Run in vscode (git-bash, bash)
   ./mvnw spring-boot:run
+
+  bash run
+  # Run with debug or stracktrace -e
+  bash run -X
+  bash run clean
 ```
 
 ### Note
@@ -24,6 +29,14 @@ anywhere → getBean() / @Autowired
      ↓
 reuse same object
 ---        ---
+```
+
+- add hot reload to disabled
+
+```bash
+     # application.properties
+     spring.devtools.restart.enabled=false
+     spring.devtools.livereload.enabled=false
 ```
 
 ```bash
@@ -45,3 +58,7 @@ Ref: https://www.baeldung.com/spring-component-annotation
 ### TODO
 
 - Learn next: https://youtu.be/5rNk7m_zlAg?t=5936
+
+### Resources
+
+- https://chatgpt.com/share/69c0e9ac-c678-800b-baa3-1168d9b5131d

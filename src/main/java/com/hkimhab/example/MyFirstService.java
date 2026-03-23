@@ -31,7 +31,7 @@ public class MyFirstService {
     // @Qualifier("MyFirstClass")
     private MyFirstClass myFirstClass;
 
-    @Value("Hello HKimhab students")
+    @Value("${my.custom.property: Hello HKimhab students}")
     private String customProperty;
 
     @Value("${my.prop: Default custom property value}")

@@ -6,5 +6,17 @@ PORT=8081
 #   -Dspring-boot.run.arguments="--server.port=$PORT"
 
 # Forward all arguments to mvnw
-./mvnw "$@" spring-boot:run \
-  -Dspring-boot.run.arguments="--server.port=$PORT"
+# ./mvnw "$@" spring-boot:run \
+#   -Dspring-boot.run.arguments="--server.port=$PORT"
+
+# Check if the first argument is 'clean'
+if [[ "$1" == "clean" ]]; then
+    MVN_CMD="./mvnw clean spring-boot:run"
+    # Shift so any additional args go to mvnw
+    shift
+else
+    MVN_CMD="./mvnw spring-boot:run"
+fi
+
+# Forward any remaining arguments and set server port
+$MVN_CMD "$@" -Dspring-boot.run.arguments="--server.port=$PORT"
