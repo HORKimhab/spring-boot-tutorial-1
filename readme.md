@@ -15,6 +15,28 @@
   bash run clean
 ```
 
+### Environment Variables
+
+Spring Boot can load project root [`.env`](/Users/hkimhab25/learning/spring-boot-tutorial-1/.env) without extra dependencies by using:
+
+```properties
+spring.config.import=optional:file:.env[.properties]
+```
+
+Expected `.env` format:
+
+```properties
+APP_SECURITY_USER_NAME=admin
+APP_SECURITY_USER_PASSWORD=admin123
+APP_SECURITY_USER_ROLES=USER
+```
+
+Notes:
+
+- keep `.env` in the project root
+- use plain `KEY=VALUE` lines, not `export KEY=VALUE`
+- restart the app after changing `.env`
+
 ### Note
 
 ```bash
@@ -55,6 +77,12 @@ Ref: https://www.baeldung.com/spring-component-annotation
 --- @componet ---
 ```
 
+### Swagger
+
+- http://localhost:8081/v3/api-docs
+- http://localhost:8081/swagger-ui/index.html
+- http://localhost:8081/swagger-ui.html
+
 ### TODO
 
 - Learn next: https://youtu.be/5rNk7m_zlAg?t=5936
@@ -62,3 +90,4 @@ Ref: https://www.baeldung.com/spring-component-annotation
 ### Resources
 
 - https://chatgpt.com/share/69c0e9ac-c678-800b-baa3-1168d9b5131d
+- Pacakages: https://mvnrepository.com
