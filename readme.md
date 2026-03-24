@@ -92,3 +92,7 @@ Ref: https://www.baeldung.com/spring-component-annotation
 
 - https://chatgpt.com/share/69c0e9ac-c678-800b-baa3-1168d9b5131d
 - Pacakages: https://mvnrepository.com
+- Connect DB with Postgres: 
+     - https://claude.ai/share/495484eb-0b77-457b-a54b-d63eee7273fb
+     - https://chatgpt.com/share/69c22e8f-ad4c-800b-9ea1-6705924bcd0c
+- Login to postgres: psql -U root_spring -d spring_db_demo
