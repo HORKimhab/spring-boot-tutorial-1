@@ -13,22 +13,33 @@ public class SecurityConfig {
     @Value("${swagger.auth.required:false}")  // defaults to false if not set
     private boolean swaggerAuthRequired;
 
+    private static final String[] PUBLIC_ENDPOINTS = {
+        "/hello",
+        "/hello/*",
+        "/message",
+        "/post-order",
+        "/api/students",
+        "/api/students/**",
+        "/swagger-ui/**",
+        "/v3/api-docs/**"
+    };
+
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
-        .csrf(csrf -> csrf.disable())
-        .authorizeHttpRequests(auth -> { 
-            auth.requestMatchers("/hello", "/hello/*", "/message", "/post-order").permitAll();   
-            if (!swaggerAuthRequired) {
-                auth.requestMatchers(
-                    "/swagger-ui/**",
-                    "/v3/api-docs/**"
-                ).permitAll();
-            }
-            auth.anyRequest().authenticated();
-        })
-        .httpBasic(Customizer.withDefaults());
-    return http.build();
+                .csrf(csrf -> csrf.disable())
+                .authorizeHttpRequests(auth -> {
+                    auth.requestMatchers(PUBLIC_ENDPOINTS).permitAll();
+                    if (!swaggerAuthRequired) {
+                        auth.requestMatchers(
+                                "/swagger-ui/**",
+                                "/v3/api-docs/**"
+                        ).permitAll();
+                    }
+                    auth.anyRequest().authenticated();
+                })
+                .httpBasic(Customizer.withDefaults());
+        return http.build();
     }
 
     // @Bean

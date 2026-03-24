@@ -11,5 +11,6 @@
   // "java.format.settings.profile": "GoogleStyle",
   // Optional: enable built-in Java formatter
   "java.format.enabled": true,
-  "java.configuration.updateBuildConfiguration": "interactive"
+  "java.configuration.updateBuildConfiguration": "interactive",
+  "java.compile.nullAnalysis.mode": "disabled"
 }
