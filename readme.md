@@ -85,7 +85,7 @@ Ref: https://www.baeldung.com/spring-component-annotation
 
 ### TODO
 
-- Learn next: https://youtu.be/5rNk7m_zlAg?t=17081
+- Learn next: https://youtu.be/5rNk7m_zlAg?t=19470
 - Fix this: '{"ok":false,"error_code":404,"description":"Not Found"}'
 
 ### Resources

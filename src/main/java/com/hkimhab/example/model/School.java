@@ -26,21 +26,18 @@ import lombok.NoArgsConstructor;
 @Data
 @Entity
 @Table(name = "schools")
-@NoArgsConstructor   // ← Jackson needs this to deserialize JSON
+@NoArgsConstructor // ← Jackson needs this to deserialize JSON
 @AllArgsConstructor
-@SQLRestriction("deleted_at IS NULL")  // ← automatically filters deleted schools in all queries
+@SQLRestriction("deleted_at IS NULL") // ← automatically filters deleted schools in all queries
 public class School {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "schools_seq")
-    @SequenceGenerator(
-            name = "schools_seq",
-            sequenceName = "schools_id_seq",
-            allocationSize = 1
-    )
+    @SequenceGenerator(name = "schools_seq", sequenceName = "schools_id_seq", allocationSize = 1)
     @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private Long id;
 
+    @Schema(example = "Rean Tech")
     private String name;
 
     public School(String name) {
@@ -59,17 +56,14 @@ public class School {
     @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private LocalDateTime deletedAt;
 
-    @OneToMany(
-            mappedBy = "school", // ← refers to 'school' field in User entity
+    @OneToMany(mappedBy = "school", // ← refers to 'school' field in User entity
             cascade = CascadeType.ALL, // ← save/delete School = save/delete all Users
             fetch = FetchType.LAZY, // ← don't load Users unless needed
             orphanRemoval = true // ← if User removed from list, delete from DB
     )
     @JsonProperty(access = JsonProperty.Access.READ_ONLY)
-    @JsonManagedReference // Parent: School, Child: User ← prevents infinite recursion when serializing to JSON 
-    @Schema(
-            description = "List of users belonging to this school",
-            accessMode = Schema.AccessMode.READ_ONLY
-    )
-    private List<User> users = new ArrayList<>();  // ← initialize to avoid NullPointerException
+    @JsonManagedReference // Parent: School, Child: User ← prevents infinite recursion when serializing to
+                          // JSON
+    @Schema(description = "List of users belonging to this school", accessMode = Schema.AccessMode.READ_ONLY)
+    private List<User> users = new ArrayList<>(); // ← initialize to avoid NullPointerException
 }
