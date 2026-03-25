@@ -96,3 +96,9 @@ Ref: https://www.baeldung.com/spring-component-annotation
      - https://claude.ai/share/495484eb-0b77-457b-a54b-d63eee7273fb
      - https://chatgpt.com/share/69c22e8f-ad4c-800b-9ea1-6705924bcd0c
 - Login to postgres: psql -U root_spring -d spring_db_demo
+
+
+## SEO
+
+
+Spring Boot & Spring Data JPA – Complete Course, Spring Boot by freeCodeCamp.org, https://www.youtube.com/watch?v=5rNk7m_zlAg, Learn how to use Spring Boot and Spring Data JPA in this full course for beginners. These are two pivotal technologies in modern Java development. Spring Boot simplifies the process of building stand-alone, production-grade Spring-based applications with minimal effort, while Spring Data JPA is a powerful tool for simplifying data access operations in Java applications, seamlessly integrating with databases., ✏️Course developed by @boualiali
