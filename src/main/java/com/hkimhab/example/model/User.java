@@ -1,12 +1,11 @@
-package com.hkimhab.example;
+package com.hkimhab.example.model;
 
 import java.time.LocalDateTime;
 
 import org.hibernate.annotations.SQLRestriction;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.hkimhab.example.model.School;
-import com.hkimhab.example.model.StudentProfile;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.CascadeType;
@@ -89,12 +88,14 @@ public class User {
     private LocalDateTime deletedAt;  // ← null = active, not null = soft deleted
 
     // ← owner side — has the FK column school_id
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "school_id", nullable = false)
-    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
-    @Schema(
-            description = "School this user belongs to",
-            accessMode = Schema.AccessMode.READ_ONLY
-    )
+    @JsonProperty(access
+            = JsonProperty.Access.READ_ONLY)
+//     @Schema(
+//             description = "School this user belongs to",
+//             accessMode = Schema.AccessMode.READ_ONLY
+//     )
+    @JsonIgnore
     private School school;
 }

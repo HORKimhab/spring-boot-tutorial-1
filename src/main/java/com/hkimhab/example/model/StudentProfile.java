@@ -3,7 +3,6 @@ package com.hkimhab.example.model;
 import org.hibernate.annotations.SQLRestriction;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.hkimhab.example.User;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.Entity;

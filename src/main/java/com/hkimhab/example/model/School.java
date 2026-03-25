@@ -6,9 +6,9 @@ import java.util.List;
 import org.hibernate.annotations.SQLRestriction;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.hkimhab.example.User;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -20,11 +20,10 @@ import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import jakarta.persistence.CascadeType;
 
 @Data
 @Entity
-@Table(name = "schoools")
+@Table(name = "schools")
 @NoArgsConstructor   // ← Jackson needs this to deserialize JSON
 @AllArgsConstructor
 @SQLRestriction("deleted_at IS NULL")  // ← automatically filters deleted schools in all queries
@@ -46,8 +45,8 @@ public class School {
         this.name = name;
     }
 
-    public Integer getId() {
-        return id != null ? id.intValue() : null;
+    public Long getId() {
+        return id != null ? id.longValue() : null;
     }
 
     @OneToMany(
