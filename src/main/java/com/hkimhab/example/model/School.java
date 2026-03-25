@@ -47,8 +47,12 @@ public class School {
         this.name = name;
     }
 
-    public Long getId() {
-        return id != null ? id.longValue() : null;
+    public Integer getId() {
+        return id != null ? id.intValue() : null;
+    }
+
+    public void setId(Integer id) {
+        this.id = id != null ? id.longValue() : null;
     }
 
     // ← null = active, not null = soft deleted

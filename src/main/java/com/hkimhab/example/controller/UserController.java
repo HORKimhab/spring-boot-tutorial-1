@@ -12,9 +12,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.hkimhab.example.StudentDto;
+import com.hkimhab.example.model.School;
 import com.hkimhab.example.model.User;
 import com.hkimhab.example.repository.UserRepository;
 import com.hkimhab.example.response.ApiResponseCustomize;
+import com.hkimhab.example.response.StudentResDto;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -34,26 +37,42 @@ public class UserController {
         this.userRepo = userRepo;
     }
 
+    private User toStudent(StudentDto dto) {
+        var student = new User();
+        student.setFirstName(dto.firstName());
+        student.setLastName(dto.lastName());
+        student.setEmail(dto.email());
+        student.setAge(dto.age());
+        student.setPassword(dto.password());
+
+        var school = new School();
+        school.setId(dto.schoolId());
+        student.setSchool(school);
+        return student;
+    }
+
+    private StudentResDto toStudentResDto(User user) {
+        return new StudentResDto(
+                user.getFirstName(),
+                user.getLastName(),
+                user.getEmail(),
+                user.getAge());
+    }
+
     @PostMapping("/user")
     @Operation(summary = "Create new user", description = "Add a new user to the database")
-    public User post(
-            @Valid
-            @org.springframework.web.bind.annotation.RequestBody
-            @RequestBody(
-                    description = "User object to be created",
-                    required = true,
-                    content = @Content(schema = @Schema(implementation = User.class))) User user
-    ) {
-        System.out.println(user);
-        return userRepo.save(user);
+    public StudentResDto post(
+            @Valid @org.springframework.web.bind.annotation.RequestBody @RequestBody(description = "User object to be created", required = true, content = @Content(schema = @Schema(implementation = StudentDto.class))) StudentDto userDto) {
+        var user = toStudent(userDto);
+        var data = userRepo.save(user);
+        return toStudentResDto(data);
     }
 
     @GetMapping("/user")
     public ResponseEntity<?> getAllUsers() {
         List<User> users = userRepo.findAll();
         return ResponseEntity.ok(
-                new ApiResponseCustomize<>(200, "Users retrieved successfully", users)
-        );
+                new ApiResponseCustomize<>(200, "Users retrieved successfully", users));
     }
 
     @GetMapping("/user/{userId}")
@@ -71,8 +90,7 @@ public class UserController {
         List<User> users = userRepo.searchByName(name);
 
         return ResponseEntity.ok(
-                new ApiResponseCustomize<>(200, users.isEmpty() ? "None user" : "Search users found", users)
-        );
+                new ApiResponseCustomize<>(200, users.isEmpty() ? "None user" : "Search users found", users));
     }
 
     // soft delete
@@ -97,7 +115,7 @@ public class UserController {
         userRepo.findByIdIncludeDeleted(userId)
                 .orElseThrow(() -> new NoSuchElementException("Force delete failed: Invalid user"));
 
-        userRepo.forceDeleteById(userId);  // ← permanently removes from DB
+        userRepo.forceDeleteById(userId); // ← permanently removes from DB
 
         return ResponseEntity.ok(new ApiResponseCustomize<>(200, "User permanently deleted", null));
     }
