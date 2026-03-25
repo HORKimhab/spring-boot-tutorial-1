@@ -18,10 +18,12 @@ public class SecurityConfig {
         "/hello/*",
         "/message",
         "/post-order",
-        "/api/students",
-        "/api/students/**",
-        "/swagger-ui/**",
-        "/v3/api-docs/**"
+        "/api/user",
+        "/api/user/**",
+        "/api/school",
+        "/api/school/*",
+        "/api/school/**",
+        "/error"
     };
 
     @Bean
