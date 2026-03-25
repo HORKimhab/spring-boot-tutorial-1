@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.hkimhab.example.StudentDto;
+import com.hkimhab.example.dto.StudentDto;
 import com.hkimhab.example.model.School;
 import com.hkimhab.example.model.User;
 import com.hkimhab.example.repository.UserRepository;

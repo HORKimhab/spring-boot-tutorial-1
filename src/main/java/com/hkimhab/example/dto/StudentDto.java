@@ -1,4 +1,4 @@
-package com.hkimhab.example;
+package com.hkimhab.example.dto;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 
