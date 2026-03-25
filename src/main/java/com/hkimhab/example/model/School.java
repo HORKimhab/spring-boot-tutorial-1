@@ -1,10 +1,12 @@
 package com.hkimhab.example.model;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.annotations.SQLRestriction;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -49,6 +51,10 @@ public class School {
         return id != null ? id.longValue() : null;
     }
 
+    // ← null = active, not null = soft deleted
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
+    private LocalDateTime deletedAt;
+
     @OneToMany(
             mappedBy = "school", // ← refers to 'school' field in User entity
             cascade = CascadeType.ALL, // ← save/delete School = save/delete all Users
@@ -56,6 +62,7 @@ public class School {
             orphanRemoval = true // ← if User removed from list, delete from DB
     )
     @JsonProperty(access = JsonProperty.Access.READ_ONLY)
+    @JsonManagedReference // Parent: School, Child: User ← prevents infinite recursion when serializing to JSON 
     @Schema(
             description = "List of users belonging to this school",
             accessMode = Schema.AccessMode.READ_ONLY

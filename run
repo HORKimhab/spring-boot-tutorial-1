@@ -14,6 +14,13 @@ if [[ "$1" == "clean" ]]; then
     MVN_CMD="./mvnw clean spring-boot:run"
     # Shift so any additional args go to mvnw
     shift
+elif [[ "$1" == "hard-clean" ]]; then
+    # ← clears Maven target + Spring devtools cache
+    echo "🧹 Hard cleaning..."
+    rm -rf target/
+    rm -rf ~/.m2/repository/com/hkimhab/  # ← your group id
+    MVN_CMD="./mvnw clean spring-boot:run"
+    shift
 else
     MVN_CMD="./mvnw spring-boot:run"
 fi

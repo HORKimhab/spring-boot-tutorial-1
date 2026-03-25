@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 
 import org.hibernate.annotations.SQLRestriction;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -88,8 +89,9 @@ public class User {
     private LocalDateTime deletedAt;  // ← null = active, not null = soft deleted
 
     // ← owner side — has the FK column school_id
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "school_id", nullable = false)
+    @ManyToOne(fetch = FetchType.LAZY, optional = true)
+    @JoinColumn(name = "school_id", nullable = true)
+    @JsonBackReference // Child: User, Parent: School ← prevents infinite recursion when serializing to JSON
     @JsonProperty(access
             = JsonProperty.Access.READ_ONLY)
 //     @Schema(

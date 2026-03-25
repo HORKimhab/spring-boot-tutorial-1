@@ -1,5 +1,7 @@
 package com.hkimhab.example.model;
 
+import java.time.LocalDateTime;
+
 import org.hibernate.annotations.SQLRestriction;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -45,6 +47,10 @@ public class StudentProfile {
     public Integer getId() {
         return id != null ? id.intValue() : null;
     }
+
+    // ← null = active, not null = soft deleted
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
+    private LocalDateTime deletedAt;
 
     @OneToOne(
             fetch = FetchType.LAZY // ← don't load User unless needed
