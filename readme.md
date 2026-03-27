@@ -13,7 +13,34 @@
   # Run with debug or stracktrace -e
   bash run -X
   bash run clean
+  bash run verify
+  bash run owasp
 ```
+
+### Security Scan
+
+Use OWASP Dependency-Check to scan project dependencies for known CVEs.
+
+```bash
+# Direct Maven command
+./mvnw dependency-check:check
+
+# Or through the helper script
+bash run owasp
+```
+
+Reports are generated at:
+
+```bash
+target/dependency-check-report.html
+target/dependency-check-report.json
+```
+
+Notes:
+
+- the first run may take a while because OWASP downloads vulnerability data
+- internet access is required
+- the build fails for findings with `CVSS >= 7`
 
 ### Environment Variables
 

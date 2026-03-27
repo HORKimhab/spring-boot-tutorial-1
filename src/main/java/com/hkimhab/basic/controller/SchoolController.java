@@ -1,7 +1,5 @@
 package com.hkimhab.basic.controller;
 
-import java.util.List;
-
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -10,8 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.hkimhab.basic.dto.SchoolDto;
 import com.hkimhab.basic.model.School;
-import com.hkimhab.basic.repository.SchoolRepository;
-import com.hkimhab.basic.response.ApiResponseCustomize;
+import com.hkimhab.basic.service.SchoolService;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -25,23 +22,21 @@ import jakarta.validation.Valid;
 @Tag(name = "School API", description = "API for managing schools")
 public class SchoolController {
 
-    private final SchoolRepository baseRepo;
+    private final SchoolService baseService;
 
-    public SchoolController(SchoolRepository baseRepo) {
-        this.baseRepo = baseRepo;
-    }
-
-    private School toSchool(SchoolDto dto) {
-        return new School(dto.name());
+    public SchoolController(SchoolService baseService) {
+        this.baseService = baseService;
     }
 
     @PostMapping("/school")
     @Operation(summary = "Create new school", description = "Add a new school to the database")
     public SchoolDto post(
             @Valid @org.springframework.web.bind.annotation.RequestBody @RequestBody(description = "School object to be created", required = true, content = @Content(schema = @Schema(implementation = School.class))) SchoolDto baseDto) {
-        var school = toSchool(baseDto);
-        baseRepo.save(school);
-        return baseDto;
+        // var school = toSchool(baseDto);
+        // baseService.save(school);
+        // return baseDto;
+
+        return baseService.post(baseDto);
 
     }
 
@@ -51,11 +46,13 @@ public class SchoolController {
         // return ResponseEntity.ok(
         // new ApiResponseCustomize<>(200, "Schools retrieved successfully", bases));
 
-        List<SchoolDto> schools = baseRepo.findAll().stream()
-                .map(s -> new SchoolDto(s.getName()))
-                .toList();
-        return ResponseEntity.ok(
-                new ApiResponseCustomize<>(200, "Schools retrieved successfully", schools));
+        // List<SchoolDto> schools = baseRepo.findAll().stream()
+        // .map(s -> new SchoolDto(s.getName()))
+        // .toList();
+        // return ResponseEntity.ok(
+        // new ApiResponseCustomize<>(200, "Schools retrieved successfully", schools));
+
+        return baseService.getAllSchools();
     }
 
     // @GetMapping("/user/{userId}")
