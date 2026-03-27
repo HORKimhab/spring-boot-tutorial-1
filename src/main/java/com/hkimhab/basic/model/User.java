@@ -19,10 +19,8 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
-import jakarta.persistence.PostLoad;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
-import jakarta.persistence.Transient;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
@@ -34,7 +32,7 @@ import lombok.NoArgsConstructor;
 @Table(name = "users")
 @NoArgsConstructor // ← Jackson needs this to deserialize JSON
 @AllArgsConstructor
-@SQLRestriction("deleted_at IS NULL") // ← automatically filters deleted users in all queries
+@SQLRestriction("deleted_at IS NULL") // ← automatically filters out deleted users in all queries
 public class User {
 
     @Id

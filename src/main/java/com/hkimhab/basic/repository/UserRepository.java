@@ -16,20 +16,19 @@ public interface UserRepository extends JpaRepository<User, Long> {
     // original long method (Spring Data generates the query)
     // ← search by firstName or lastName (case insensitive)
     List<User> findByFirstNameContainingIgnoreCaseOrLastNameContainingIgnoreCase(
-            String firstName, String lastName
-    );
+            String firstName, String lastName);
 
     // ← short alias that calls the long one
     default List<User> searchByName(String name) {
         return findByFirstNameContainingIgnoreCaseOrLastNameContainingIgnoreCase(name, name);
     }
 
-    @Query("SELECT u FROM User u WHERE u.id = :id")
+    @Query(value = "SELECT * FROM users WHERE id = :id", nativeQuery = true)
     Optional<User> findByIdIncludeDeleted(@Param("id") Long id);
 
     // ← bypasses @SQLRestriction for force delete
     @Modifying
     @Transactional
-    @Query("DELETE FROM User u WHERE u.id = :id")
+    @Query(value = "DELETE FROM users WHERE id = :id", nativeQuery = true)
     void forceDeleteById(@Param("id") Long id);
 }
