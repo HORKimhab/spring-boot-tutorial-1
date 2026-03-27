@@ -19,6 +19,7 @@ Commands:
   deps        Print Maven dependency tree for vulnerability tracing
   fix-deps    Show available dependency and plugin updates
   hard-clean  Remove target and local project Maven cache, then start the app
+  test        Run unit/integration tests
   verify      Run mvn clean verify
   owasp       Run OWASP Dependency-Check scan
   <none>      Start the app
@@ -31,6 +32,7 @@ Examples:
   bash run clean-owasp
   bash run deps
   bash run fix-deps
+  bash run test
   bash run --help
 EOF
 }
@@ -80,6 +82,10 @@ elif [[ "$1" == "deps" ]]; then
 elif [[ "$1" == "fix-deps" ]]; then
     shift
     ./mvnw versions:display-dependency-updates versions:display-plugin-updates "$@"
+    exit $?
+elif [[ "$1" == "test" ]]; then
+    shift
+    ./mvnw test "$@"
     exit $?
 elif [[ "$1" == "verify" ]]; then
     shift
