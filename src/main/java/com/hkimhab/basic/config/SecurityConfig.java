@@ -1,4 +1,4 @@
-package com.hkimhab.example.config;
+package com.hkimhab.basic.config;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;

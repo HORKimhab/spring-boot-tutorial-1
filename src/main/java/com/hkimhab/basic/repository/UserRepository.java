@@ -1,4 +1,4 @@
-package com.hkimhab.example.repository;
+package com.hkimhab.basic.repository;
 
 import java.util.List;
 import java.util.Optional;
@@ -9,7 +9,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.hkimhab.example.model.User;
+import com.hkimhab.basic.model.User;
 
 public interface UserRepository extends JpaRepository<User, Long> {
 

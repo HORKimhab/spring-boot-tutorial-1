@@ -1,10 +1,10 @@
-package com.hkimhab.example.config;
+package com.hkimhab.basic.config;
 
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import com.hkimhab.example.MyFirstClass;
+import com.hkimhab.basic.MyFirstClass;
 
 @Configuration
 // @Profile("dev")

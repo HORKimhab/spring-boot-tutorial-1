@@ -1,4 +1,4 @@
-package com.hkimhab.example.controller;
+package com.hkimhab.basic.controller;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -12,12 +12,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.hkimhab.example.dto.StudentDto;
-import com.hkimhab.example.model.School;
-import com.hkimhab.example.model.User;
-import com.hkimhab.example.repository.UserRepository;
-import com.hkimhab.example.response.ApiResponseCustomize;
-import com.hkimhab.example.response.StudentResDto;
+import com.hkimhab.basic.dto.StudentDto;
+import com.hkimhab.basic.mapper.StudentMapper;
+import com.hkimhab.basic.model.User;
+import com.hkimhab.basic.repository.UserRepository;
+import com.hkimhab.basic.response.ApiResponseCustomize;
+import com.hkimhab.basic.response.StudentResDto;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -32,40 +32,20 @@ import jakarta.validation.Valid;
 public class UserController {
 
     private final UserRepository userRepo;
+    private final StudentMapper studentMapper;
 
-    public UserController(UserRepository userRepo) {
+    public UserController(UserRepository userRepo, StudentMapper studentMapper) {
         this.userRepo = userRepo;
-    }
-
-    private User toStudent(StudentDto dto) {
-        var student = new User();
-        student.setFirstName(dto.firstName());
-        student.setLastName(dto.lastName());
-        student.setEmail(dto.email());
-        student.setAge(dto.age());
-        student.setPassword(dto.password());
-
-        var school = new School();
-        school.setId(dto.schoolId());
-        student.setSchool(school);
-        return student;
-    }
-
-    private StudentResDto toStudentResDto(User user) {
-        return new StudentResDto(
-                user.getFirstName(),
-                user.getLastName(),
-                user.getEmail(),
-                user.getAge());
+        this.studentMapper = studentMapper;
     }
 
     @PostMapping("/user")
     @Operation(summary = "Create new user", description = "Add a new user to the database")
     public StudentResDto post(
             @Valid @org.springframework.web.bind.annotation.RequestBody @RequestBody(description = "User object to be created", required = true, content = @Content(schema = @Schema(implementation = StudentDto.class))) StudentDto userDto) {
-        var user = toStudent(userDto);
+        var user = studentMapper.toStudent(userDto);
         var data = userRepo.save(user);
-        return toStudentResDto(data);
+        return studentMapper.toStudentResDto(data);
     }
 
     @GetMapping("/user")

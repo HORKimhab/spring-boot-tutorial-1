@@ -1,4 +1,4 @@
-package com.hkimhab.example.response;
+package com.hkimhab.basic.response;
 
 public record StudentResDto(
         String firstName,

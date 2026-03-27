@@ -1,4 +1,4 @@
-package com.hkimhab.example.controller;
+package com.hkimhab.basic.controller;
 
 import java.util.List;
 
@@ -8,10 +8,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.hkimhab.example.dto.SchoolDto;
-import com.hkimhab.example.model.School;
-import com.hkimhab.example.repository.SchoolRepository;
-import com.hkimhab.example.response.ApiResponseCustomize;
+import com.hkimhab.basic.dto.SchoolDto;
+import com.hkimhab.basic.model.School;
+import com.hkimhab.basic.repository.SchoolRepository;
+import com.hkimhab.basic.response.ApiResponseCustomize;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;

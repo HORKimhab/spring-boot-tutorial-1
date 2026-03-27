@@ -1,4 +1,4 @@
-package com.hkimhab.example.controller;
+package com.hkimhab.basic.controller;
 
 import java.util.Map;
 
@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.hkimhab.example.model.Order;
+import com.hkimhab.basic.model.Order;
 
 @RestController
 @RequestMapping(produces = MediaType.APPLICATION_JSON_VALUE)

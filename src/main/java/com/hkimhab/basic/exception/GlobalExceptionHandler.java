@@ -1,11 +1,11 @@
-package com.hkimhab.example.exception;
-
-import com.hkimhab.example.response.ApiResponseCustomize;
+package com.hkimhab.basic.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+
+import com.hkimhab.basic.response.ApiResponseCustomize;
 
 import java.util.NoSuchElementException;
 

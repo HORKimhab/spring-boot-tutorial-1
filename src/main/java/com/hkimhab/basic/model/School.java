@@ -1,4 +1,4 @@
-package com.hkimhab.example.model;
+package com.hkimhab.basic.model;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;

@@ -1,4 +1,4 @@
-package com.hkimhab.example.response;
+package com.hkimhab.basic.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
