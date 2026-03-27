@@ -23,6 +23,8 @@ public interface UserRepository extends JpaRepository<User, Long> {
         return findByFirstNameContainingIgnoreCaseOrLastNameContainingIgnoreCase(name, name);
     }
 
+    boolean existsByEmail(String email);
+
     @Query(value = "SELECT * FROM users WHERE id = :id", nativeQuery = true)
     Optional<User> findByIdIncludeDeleted(@Param("id") Long id);
 
