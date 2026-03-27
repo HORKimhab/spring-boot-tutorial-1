@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suppressions xmlns="https://jeremylong.github.io/DependencyCheck/dependency-suppression.1.4.xsd">
+    <!-- <suppress>
+        <notes><![CDATA[
+        False positive: CVE-2022-31691 applies to Spring Tools / STS / VSCode extensions,
+        not to org.springframework.boot:spring-boot-devtools.
+        ]]></notes>
+        <packageUrl regex="true">^pkg:maven/org\.springframework\.boot/spring-boot-devtools@.*$</packageUrl>
+        <cve>CVE-2022-31691</cve>
+    </suppress> -->
+</suppressions>
