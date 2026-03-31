@@ -14,6 +14,7 @@ Usage: bash run [command] [maven args]
 Commands:
   --help, -h  Show this help message
   clean       Run clean and start the app
+  clean-test  Run mvn clean test
   clean-owasp, co
                Run clean and OWASP Dependency-Check scan
   deps        Print Maven dependency tree for vulnerability tracing
@@ -27,6 +28,7 @@ Commands:
 Examples:
   bash run
   bash run clean
+  bash run clean-test
   bash run verify
   bash run owasp
   bash run clean-owasp
@@ -86,6 +88,10 @@ elif [[ "$1" == "fix-deps" ]]; then
 elif [[ "$1" == "test" ]]; then
     shift
     ./mvnw test "$@"
+    exit $?
+elif [[ "$1" == "clean-test" ]]; then
+    shift
+    ./mvnw clean test "$@"
     exit $?
 elif [[ "$1" == "verify" ]]; then
     shift
