@@ -123,6 +123,8 @@ Ref: https://www.baeldung.com/spring-component-annotation
      - https://claude.ai/share/495484eb-0b77-457b-a54b-d63eee7273fb
      - https://chatgpt.com/share/69c22e8f-ad4c-800b-9ea1-6705924bcd0c
 - Login to postgres: psql -U root_spring -d spring_db_demo
+- https://shortcourses.cstad.edu.kh/courses/20e429c3-6c54-4cea-a172-12666b583560
+- Spring Framework by cstad or ISTAD: Institute of Science and Technology Advanced Development
 
 
 ## SEO
