@@ -10,20 +10,21 @@ import org.springframework.security.web.SecurityFilterChain;
 @Configuration
 public class SecurityConfig {
 
-    @Value("${swagger.auth.required:false}")  // defaults to false if not set
+    @Value("${swagger.auth.required:false}") // defaults to false if not set
     private boolean swaggerAuthRequired;
 
     private static final String[] PUBLIC_ENDPOINTS = {
-        "/hello",
-        "/hello/*",
-        "/message",
-        "/post-order",
-        "/api/user",
-        "/api/user/**",
-        "/api/school",
-        "/api/school/*",
-        "/api/school/**",
-        "/error"
+            "/hello",
+            "/hello/*",
+            "/message",
+            "/post-order",
+            "/api/user",
+            "/api/user/**",
+            "/api/school",
+            "/api/school/*",
+            "/api/school/**",
+            "/error",
+            "/response/**",
     };
 
     @Bean
@@ -35,8 +36,7 @@ public class SecurityConfig {
                     if (!swaggerAuthRequired) {
                         auth.requestMatchers(
                                 "/swagger-ui/**",
-                                "/v3/api-docs/**"
-                        ).permitAll();
+                                "/v3/api-docs/**").permitAll();
                     }
                     auth.anyRequest().authenticated();
                 })
@@ -46,6 +46,6 @@ public class SecurityConfig {
 
     // @Bean
     // public PasswordEncoder passwordEncoder() {
-    //     return new BCryptPasswordEncoder();
+    // return new BCryptPasswordEncoder();
     // }
 }
